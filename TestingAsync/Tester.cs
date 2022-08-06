@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Interfaces;
 
-namespace Testing
+namespace TestingAsync
 {
     class Tester
     {        
@@ -36,13 +36,15 @@ namespace Testing
                 throw new Exception("invalid MaxDuration.");
         }
 
-        public void Run()
+        public async Task Run()
         {
             Console.WriteLine($"\r\nMethod: {_work.Name}");
             for (int testNumber = _minTestNumber; _maxTestNumber > 0 ? testNumber <= _maxTestNumber : true; testNumber++)
             {
-                Cancelation cancelation = new Cancelation();
+                
 
+                Cancelation cancelation = new Cancelation();
+                    
                 string inFile = Path.Combine(_checkFilesPath, $"test.{testNumber}.in");
                 string outFile = Path.Combine(_checkFilesPath, $"test.{testNumber}.out");
 
@@ -65,45 +67,43 @@ namespace Testing
                 string expect = File.ReadAllText(outFile).Trim();
                 long duration = 0;
 
-                string actual;                
+
+                var task = Task.Run(() => RunTest(data, cancelation, ref duration));
+
+                Task delay = null;
 
                 if (_maxDuration > 0)
                 {
-                    using(Timer t1 = new Timer(OnTimeout, cancelation, _maxDuration, Timeout.Infinite))
+                    delay = Task.Delay(_maxDuration);
+                    if (await Task.WhenAny(task, delay) == delay)
                     {
-                        actual = RunTest(data, cancelation, ref duration);
-                    }
-                    
-                    if (cancelation.Cancel == true)
-                    {                        
+                        cancelation.Cancel = true;
+                        await task;
                         Console.WriteLine($"Test #{testNumber}:  Terminated by timeout, duration: {duration} ms");
                         continue;
                     }
                 }
                 else
                 {
-                    actual = RunTest(data, cancelation, ref duration);
-                }                
+                    await task;
+                }
 
-                Console.WriteLine($"Test #{testNumber}:  {actual == expect}, result: {actual},  duration: {duration} ms");
+                string actual = task.Result;
+
+                Console.WriteLine($"Test #{testNumber}:  {actual == expect}, result: {actual},  duration: {duration} ms");                    
+                
             }
-        }
-
-        private void OnTimeout(object state)
-        {
-            Cancelation cancelation = state as Cancelation;
-            cancelation.Cancel = true;
         }
        
 
-        private string RunTest(string[] data, Cancelation cancelation,  ref long duration)
+        private string RunTest(string[] data, Cancelation cancelation,  ref long duration) //CancellationToken ct,
         {
             string res = "";
             Stopwatch sw = new Stopwatch();
             sw.Start();
             try
             {
-                res = _work.Run(data, cancelation);
+                res = _work.Run(data, cancelation);//ct
             }
             catch(Exception exc)
             {

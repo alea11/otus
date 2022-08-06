@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{EA41762B-613B-43F1-ACD2-803DEEA2AEFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingAsync", "TestingAsync\TestingAsync.csproj", "{BF1D9394-6E98-4B9F-BC82-2894A52573F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EA41762B-613B-43F1-ACD2-803DEEA2AEFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA41762B-613B-43F1-ACD2-803DEEA2AEFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA41762B-613B-43F1-ACD2-803DEEA2AEFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF1D9394-6E98-4B9F-BC82-2894A52573F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF1D9394-6E98-4B9F-BC82-2894A52573F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF1D9394-6E98-4B9F-BC82-2894A52573F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF1D9394-6E98-4B9F-BC82-2894A52573F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
