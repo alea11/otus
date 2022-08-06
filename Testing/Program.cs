@@ -28,8 +28,8 @@ namespace Testing
             tester = new Tester(new O2_LuckyTickets.ExcelWay(), path_02);
             tester.Run();
 
-            //tester = new Tester(new O2_LuckyTickets.ExcelRecursiveWay(), path_02, maxDuration: 20000);
-            //tester.Run();
+            tester = new Tester(new O2_LuckyTickets.ExcelRecursiveWay(), path_02, maxDuration: 20000);
+            tester.Run();
 
             Console.WriteLine("\n\rpress any key");
             Console.ReadKey();
