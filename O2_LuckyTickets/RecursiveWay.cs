@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace O2_LuckyTickets
 {
-    public class RecursiveWay : IWork
+    public class RecursiveWay : IWork<long>
     {
         private Cancelation _cancelation;
 
-        public string Run(string[] data, Cancelation cancelation) //CancellationToken ct
+        public long Run(string[] data, Cancelation cancelation) //CancellationToken ct
         {
             _cancelation = cancelation;
 
             //с накоплением результата внутри функции
-            return GetLuckyCount(int.Parse(data[0]), 0, 0).ToString();
+            return GetLuckyCount(int.Parse(data[0]), 0, 0);
 
             // с внешним накоплением результата
             //GetLuckyCount_(int.Parse(data[0]), 0, 0).ToString();

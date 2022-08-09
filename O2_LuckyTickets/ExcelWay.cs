@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace O2_LuckyTickets
 {
-    public class ExcelWay : IWork
+    public class ExcelWay : IWork<ulong>
     {
         private Cancelation _cancelation;        
 
-        public string Run(string[] data, Cancelation cancelation) //CancellationToken ct
+        public ulong Run(string[] data, Cancelation cancelation) //CancellationToken ct
         {            
             _cancelation = cancelation;
 
@@ -47,7 +47,7 @@ namespace O2_LuckyTickets
                 result += (psum * psum);
             }
 
-            return result.ToString();
+            return result;
         }
 
         public string Name

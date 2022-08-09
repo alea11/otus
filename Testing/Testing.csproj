@@ -58,6 +58,10 @@
       <Project>{51b09355-3af2-4465-8626-d3c1285929d3}</Project>
       <Name>O2_LuckyTickets</Name>
     </ProjectReference>
+    <ProjectReference Include="..\O3_AlgebraicAlgorithms\O3_AlgebraicAlgorithms.csproj">
+      <Project>{f89c7a2c-514a-4628-9c27-0bf0335054c1}</Project>
+      <Name>O3_AlgebraicAlgorithms</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

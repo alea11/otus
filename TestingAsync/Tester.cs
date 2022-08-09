@@ -10,18 +10,18 @@ using Interfaces;
 
 namespace TestingAsync
 {
-    class Tester
+    class Tester<T>
     {        
         private string _checkFilesPath;
         private int _maxDuration;
-        private IWork _work;
+        private IWork<T> _work;
         private int _minTestNumber;
         private int _maxTestNumber;
 
         private CancellationTokenSource _cts = new CancellationTokenSource();
         
 
-        public Tester(IWork work, string checkFilesPath, int minTestNumber = 0, int maxTestNumber = 0, int maxDuration = 0)
+        public Tester(IWork<T> work, string checkFilesPath, int minTestNumber = 0, int maxTestNumber = 0, int maxDuration = 0)
         {
             _work = work;
             _checkFilesPath = checkFilesPath;
@@ -64,7 +64,8 @@ namespace TestingAsync
 
                     
                 string[] data = File.ReadAllLines(inFile);
-                string expect = File.ReadAllText(outFile).Trim();
+                string strExpect = File.ReadAllText(outFile).Trim();
+                T expect = (T)Convert.ChangeType(strExpect, typeof(T));
                 long duration = 0;
 
 
@@ -88,17 +89,17 @@ namespace TestingAsync
                     await task;
                 }
 
-                string actual = task.Result;
+                T actual = task.Result;
 
-                Console.WriteLine($"Test #{testNumber}:  {actual == expect}, result: {actual},  duration: {duration} ms");                    
+                Console.WriteLine($"Test #{testNumber}:  {actual.Equals(expect)}, result: {actual},  duration: {duration} ms");                    
                 
             }
         }
        
 
-        private string RunTest(string[] data, Cancelation cancelation,  ref long duration) //CancellationToken ct,
+        private T RunTest(string[] data, Cancelation cancelation,  ref long duration) //CancellationToken ct,
         {
-            string res = "";
+            T res = default(T);
             Stopwatch sw = new Stopwatch();
             sw.Start();
             try

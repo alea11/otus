@@ -10,18 +10,18 @@ using Interfaces;
 
 namespace Testing
 {
-    class Tester
+    class Tester<T>
     {        
         private string _checkFilesPath;
         private int _maxDuration;
-        private IWork _work;
+        private IWork<T> _work;
         private int _minTestNumber;
         private int _maxTestNumber;
 
         private CancellationTokenSource _cts = new CancellationTokenSource();
         
 
-        public Tester(IWork work, string checkFilesPath, int minTestNumber = 0, int maxTestNumber = 0, int maxDuration = 0)
+        public Tester(IWork<T> work, string checkFilesPath, int minTestNumber = 0, int maxTestNumber = 0, int maxDuration = 0)
         {
             _work = work;
             _checkFilesPath = checkFilesPath;
@@ -62,10 +62,11 @@ namespace Testing
 
                     
                 string[] data = File.ReadAllLines(inFile);
-                string expect = File.ReadAllText(outFile).Trim();
+                string strExpect = File.ReadAllText(outFile).Trim().Replace('.',',');
+                T expect = (T)Convert.ChangeType(strExpect, typeof(T));
                 long duration = 0;
 
-                string actual;                
+                T actual;                
 
                 if (_maxDuration > 0)
                 {
@@ -85,7 +86,7 @@ namespace Testing
                     actual = RunTest(data, cancelation, ref duration);
                 }                
 
-                Console.WriteLine($"Test #{testNumber}:  {actual == expect}, result: {actual},  duration: {duration} ms");
+                Console.WriteLine($"Test #{testNumber}:  {actual.Equals(expect)}, result: {actual},  duration: {duration} ms");
             }
         }
 
@@ -96,9 +97,9 @@ namespace Testing
         }
        
 
-        private string RunTest(string[] data, Cancelation cancelation,  ref long duration)
+        private T RunTest(string[] data, Cancelation cancelation,  ref long duration)
         {
-            string res = "";
+            T res = default(T);
             Stopwatch sw = new Stopwatch();
             sw.Start();
             try

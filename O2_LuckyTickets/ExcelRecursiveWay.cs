@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace O2_LuckyTickets
 {
-    public class ExcelRecursiveWay : IWork
+    public class ExcelRecursiveWay : IWork<ulong>
     {
         private Cancelation _cancelation;
-        public string Run(string[] data, Cancelation cancelation)
+        public ulong Run(string[] data, Cancelation cancelation)
         {
             _cancelation = cancelation;
 
@@ -28,7 +28,7 @@ namespace O2_LuckyTickets
                 result += (psum * psum);
             }
 
-            return result.ToString();
+            return result;
         }
 
         private long[] GetPartSums(int N)

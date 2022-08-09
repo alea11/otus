@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace O2_LuckyTickets
 {
-    public class DirectlyWay6 : IWork
+    public class DirectlyWay6 : IWork<int>
     {        
-        public string Run(string[] data, Cancelation cancelation) //CancellationToken ct
+        public int Run(string[] data, Cancelation cancelation) //CancellationToken ct
         {
             int res = 0;
             for (int a1 = 0; a1 <= 9; a1++)
@@ -36,7 +36,7 @@ namespace O2_LuckyTickets
                     }
                 }
             }
-            return res.ToString();
+            return res;
         }
 
         public string Name

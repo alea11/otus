@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace O2_LuckyTickets
 {
-    public class RecursiveWay_a : IWork
+    public class RecursiveWay_a : IWork<long>
     {        
         private Cancelation _cancelation;
-        public string Run(string[] data, Cancelation cancelation)
+        public long Run(string[] data, Cancelation cancelation)
         {
             _cancelation = cancelation;
-            return GetLuckyCount2(int.Parse(data[0]), 0, 0).ToString();
+            return GetLuckyCount2(int.Parse(data[0]), 0, 0);
         }
 
         long GetLuckyCount2(int N, int sumA, int sumB)

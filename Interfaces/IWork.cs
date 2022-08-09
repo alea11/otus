@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Interfaces
 {
-    public interface IWork
+    public interface IWork<T>
     {        
-        string Run(string[] data, Cancelation cancelation); //CancellationToken ct
+        T Run(string[] data, Cancelation cancelation); //CancellationToken ct
         string Name { get; }
     }
 }
