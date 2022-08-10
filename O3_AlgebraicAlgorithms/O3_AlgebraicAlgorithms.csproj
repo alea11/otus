@@ -43,10 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Fibo\Fibo_A1.cs" />
     <Compile Include="Power\Power_A25.cs" />
     <Compile Include="Power\Power_A3.cs" />
     <Compile Include="Power\Power_A2.cs" />
     <Compile Include="Power\Power_A1.cs" />
+    <Compile Include="Primes\Pimes_A1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,9 +57,6 @@
       <Name>Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Fibo\" />
-    <Folder Include="Primes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -27,18 +27,17 @@ namespace O3_AlgebraicAlgorithms.Power
         double PowPow2(double a, ref long pow)
         {
             double res = pow == 0 ? 1 : a;
-            long p2 = 0;  // отработанная степень после 1-го этапа
+            long p = 0;
 
-            for (long p = 2; p <= pow; p *= 2)
-            {
-                p2 = p;
+            for (p = 2; p <= pow; p *= 2)
+            {                
                 res *= res;
             }
 
-            pow = pow - p2;
+            pow = pow - (p>>1); //остается еще  'добрать' степень. при этом - отменяем последнеее удвоение степени (уже лишнее для результата, но было нужным для проверки цикла)
             if (pow <= 0)
                 return res;
-            return res * PowPow2(a, ref pow);
+            return res * PowPow2(a, ref pow);            
         }
 
         public string Name

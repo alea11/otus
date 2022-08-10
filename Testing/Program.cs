@@ -17,7 +17,12 @@ namespace Testing
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Select tests: \n\rLuckyTickets: \t1\r\nAlgebraicAlgorithms: \t2");
+            Console.WriteLine("Select tests:\r\n");
+            Console.WriteLine("LuckyTickets: \t1");
+            Console.WriteLine("AlgebraicAlgorithms - Power: \t2");
+            Console.WriteLine("AlgebraicAlgorithms - Fibo: \t3");
+            Console.WriteLine("AlgebraicAlgorithms - Primes: \t4");
+
             char section = Console.ReadKey().KeyChar;
 
             Console.WriteLine();
@@ -27,8 +32,15 @@ namespace Testing
                     RunTests_2();
                     break;
                 case '2':
-                    RunTests_3();
+                    RunTests_3A();
                     break;
+                case '3':
+                    RunTests_3B();
+                    break;
+                case '4':
+                    RunTests_3C();
+                    break;
+                
                 default:
                     return;
             }
@@ -60,7 +72,7 @@ namespace Testing
             tester6.Run();
         }
 
-        static void RunTests_3()
+        static void RunTests_3A()
         {
             Tester<double> tester1 = new Tester<double>(new O3_AlgebraicAlgorithms.Power.Power_A1(), path_03_Power, maxDuration: 20000);
             tester1.Run();
@@ -73,6 +85,26 @@ namespace Testing
 
             Tester<double> tester3 = new Tester<double>(new O3_AlgebraicAlgorithms.Power.Power_A3(), path_03_Power, maxDuration: 20000);
             tester3.Run();
+
+        }
+
+        static void RunTests_3B()
+        {
+            Tester<ulong> tester1 = new Tester<ulong>(new O3_AlgebraicAlgorithms.Fibo.Fibo_A1(), path_03_Fibo, 0,1, maxDuration: 20000);
+            tester1.Run();
+
+            
+
+
+
+        }
+
+        static void RunTests_3C()
+        {
+            Tester<ulong> tester1 = new Tester<ulong>(new O3_AlgebraicAlgorithms.Primes.Pimes_A1(), path_03_Primes,  maxDuration: 20000);
+            tester1.Run();
+
+            
 
 
 

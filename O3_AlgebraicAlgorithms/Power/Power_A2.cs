@@ -21,22 +21,23 @@ namespace O3_AlgebraicAlgorithms.Power
 
             double res = pow == 0? 1 : a;
            
-            long p2 = 0;  // отработанная степень после 1-го этапа
+            long p = 0;
 
-            for(long p = 2; p <= pow; p*=2) 
-            {
-                p2 = p;               
+            for (p = 2; p <= pow; p*=2) 
+            {                         
                 res *= res;                 
             }
 
+            p = p >> 1; // отмена последнего удвоения степени (уже лишнего для результата, но было нужным для проверки цикла)
+
             // домножаем
-            if (p2 > 0) 
-                while (p2 < pow)
+            if (p > 0)
+                while (p < pow) 
                 {
                     if (_cancelation.Cancel)
                         return 0;
                     res *= a;
-                    p2++;
+                    p++;
                 }          
 
             return res;
