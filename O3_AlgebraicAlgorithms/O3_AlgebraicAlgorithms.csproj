@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,13 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Fibo\Fibo_A1.cs" />
+    <Compile Include="Fibo\Fibo_A2.cs" />
+    <Compile Include="Fibo\Fibo_A3.cs" />
+    <Compile Include="Fibo\Fibo_A4.cs" />
     <Compile Include="Power\Power_A25.cs" />
     <Compile Include="Power\Power_A3.cs" />
     <Compile Include="Power\Power_A2.cs" />
     <Compile Include="Power\Power_A1.cs" />
-    <Compile Include="Primes\Pimes_A1.cs" />
+    <Compile Include="Primes\Primes_A1.cs" />
+    <Compile Include="Primes\Primes_A2.cs" />
+    <Compile Include="Primes\Primes_A3.cs" />
+    <Compile Include="Primes\Primes_A4.cs" />
+    <Compile Include="Primes\Primes_A5.cs" />
+    <Compile Include="Primes\Primes_A6.cs" />
+    <Compile Include="Primes\Primes_Era.cs" />
+    <Compile Include="Primes\Primes_EraLin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +67,5 @@
       <Name>Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

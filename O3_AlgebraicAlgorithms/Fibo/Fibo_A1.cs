@@ -2,34 +2,35 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace O3_AlgebraicAlgorithms.Fibo
 {
-    public class Fibo_A1 : IWork<ulong>
+    public class Fibo_A1 : IWork<BigInteger>
     {
         private Cancelation _cancelation;
-        public ulong Run(string[] data, Cancelation cancelation)
+        public BigInteger Run(string[] data, Cancelation cancelation)
         {
             _cancelation = cancelation;
 
-            //double a = double.Parse(data[0].Replace('.',','));
-            //long pow = long.Parse(data[1]);
 
-            ulong res = 1;
-            //for (int i = 0; i < pow; i++)
-            //{
-            //    if (_cancelation.Cancel) // работает, но замедление работы почти в 2 раза
-            //        return 0;
-            //    res *= a;
-            //}                
+            int N = int.Parse(data[0]);                    
 
-            return res;
+            return GetFibo(N);
+        }
 
+        private BigInteger GetFibo(int N)
+        {
+            if (_cancelation.Cancel)
+                return 0;
+            if (N <= 1)
+                return N;
+            return GetFibo(N - 1) + GetFibo(N - 2);
         }
 
         public string Name
-        { get { return "Fibo_A1 ()"; } }
+        { get { return "Fibo_A1 (рекурсивный алгоритм)"; } }
     }
 }

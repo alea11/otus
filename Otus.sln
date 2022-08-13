@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingAsync", "TestingAsyn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O3_AlgebraicAlgorithms", "O3_AlgebraicAlgorithms\O3_AlgebraicAlgorithms.csproj", "{F89C7A2C-514A-4628-9C27-0BF0335054C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O4_DataStructuries", "O4_Contayners\O4_DataStructuries.csproj", "{EC8EAE51-6223-47A8-B8A3-7BE385A6BC4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F89C7A2C-514A-4628-9C27-0BF0335054C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F89C7A2C-514A-4628-9C27-0BF0335054C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F89C7A2C-514A-4628-9C27-0BF0335054C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC8EAE51-6223-47A8-B8A3-7BE385A6BC4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC8EAE51-6223-47A8-B8A3-7BE385A6BC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC8EAE51-6223-47A8-B8A3-7BE385A6BC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC8EAE51-6223-47A8-B8A3-7BE385A6BC4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

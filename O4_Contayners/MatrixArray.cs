@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace O3_AlgebraicAlgorithms
+namespace O4_DataStructuries
 {
-    public class Class1
+    class MatrixArray<T>// : IArray<>
     {
     }
 }

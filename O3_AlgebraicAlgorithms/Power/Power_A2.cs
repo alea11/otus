@@ -1,6 +1,8 @@
 ﻿using Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +18,10 @@ namespace O3_AlgebraicAlgorithms.Power
         {
             _cancelation = cancelation;
 
-            double a = double.Parse(data[0].Replace('.', ','));
+            //double a = double.Parse(data[0].Replace('.', ','));
+            TypeConverter converter = TypeDescriptor.GetConverter(typeof(double));
+            double a = (double)converter.ConvertFromString(null, CultureInfo.InvariantCulture, data[0]);
+
             long pow = long.Parse(data[1]);
 
             double res = pow == 0? 1 : a;
