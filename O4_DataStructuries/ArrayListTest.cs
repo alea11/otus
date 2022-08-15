@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace O4_DataStructuries
 {
-    public class VectorArrayTest : ArrayTest, IWork
-    {        
+    public class ArrayListTest : ArrayTest, IWork
+    {
         public void Run(string[] data, Cancelation cancelation)
-        {            
+        {
             int mode = int.Parse(data[0]); // 1 - добавление, 2 - вставка в 0-ю позицию, 3 - удаление из 0-й позиции
-            int vector = int.Parse(data[1]);
-            int total = int.Parse(data[2]);
+            int total = int.Parse(data[1]);
 
-            IArray<int> arr = new VectorArray<int>(vector);
+            IArray<int> arr = new ArrayList<int>();
+
             base.Run(arr, mode, total, cancelation);
         }
 
         public string Name
-        {  get {  return $"VectorArrayTest ({_operation})"; } }
+        { get { return $"ArrayListTest ({_operation})"; } }
     }
 }

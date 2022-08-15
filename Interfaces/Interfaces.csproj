@@ -48,6 +48,7 @@
     <Compile Include="BigIntegerExtension.cs" />
     <Compile Include="Cancelation.cs" />
     <Compile Include="IArray.cs" />
+    <Compile Include="IPriorityQueue.cs" />
     <Compile Include="IWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -26,13 +26,12 @@ namespace Testing
         public void CustomRun(string[] inp)
         {
             Console.WriteLine($"\r\nMethod: {_work.Name}");
-            Console.Write($"Custom test. input: {string.Join(", ", inp)},  ");
+            Console.Write($"Custom test. input: ({string.Join(", ", inp)}),  ");
 
             long duration = 0;
           
             if (_Run( inp , ref duration) == true)
                 Console.WriteLine($"duration: {duration} ms");
-
         }
 
         private bool _Run(string[] data, ref long duration)

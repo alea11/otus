@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace O4_DataStructuries
+namespace O4_DataStructuries.Arrays
 {
     public class MatrixArray<T> : IArray<T>
     {
         private IArray<T[]> _array;
-        private const int _lvector = 8; // показатель степени 2 
+        private const int _lvector = 8; // показатель степени 2  размера внутреннего массива
         private int _vector; // размер внутреннего массива - степень 2
-        private int indexMask; // маска для вычленения внутреннего индекса
+        private int indexMask; // маска для вычленения индекса по внутреннему массиву (одному из)
         private int _size;
 
         public MatrixArray()
@@ -34,6 +34,11 @@ namespace O4_DataStructuries
 
         }
         public void Add(T item, int index)
+        {
+            throw new NotSupportedException();
+        }
+
+        public T Remove(int index)
         {
             throw new NotSupportedException();
         }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace O4_DataStructuries
+namespace O4_DataStructuries.Arrays
 {
     public class FactorArray<T> : IArray<T>
     {
@@ -40,6 +40,24 @@ namespace O4_DataStructuries
             _array[index] = item;
         }
 
+        public T Remove(int index)
+        {
+            T item = _array[index];
+
+            if (Size == _array.Length / (_factor * 2))
+                // если после нескольких удалений размер неиспользуемой области увеличился в  _factor * 2 - то сокращаем это соотношение до _factor                
+                ReduceSize(tailIndex: index);
+            else
+            {
+                // поэлементный перенос 'хвоста' массива на 1 позицию влево 
+                for (int i = index; i < Size - 1; i++)
+                    _array[i] = _array[i + 1];
+            }
+            _size--;
+
+            return item;
+        }
+
         public T Get(int index)
         {
             return _array[index];
@@ -66,16 +84,30 @@ namespace O4_DataStructuries
         /// <param name="tailIndex">индекс (в исходном массиве) первого сдвигаемого элемента</param>
         private void Resize(int tailIndex)
         {
-            T[] newArray = new T[Size * _factor + 1];
+            T[] newArray = new T[Size * _factor];
             if (!IsEmpty)
             {
                 if (tailIndex > 0)
                     Array.Copy(_array, 0, newArray, 0, tailIndex);
                 if (tailIndex < Size)
                     Array.Copy(_array, tailIndex, newArray, tailIndex + 1, Size - tailIndex);
-                _array = newArray;
-
             }
+            _array = newArray;
+        }
+
+        /// <summary>
+        /// Сокращение массива  с разделением исходного массива и сдвигом 'хвоста' влево
+        /// </summary>
+        /// <param name="tailIndex">индекс (в исходном массиве) первого сдвигаемого элемента</param>
+        private void ReduceSize(int tailIndex)
+        {
+            T[] newArray = new T[Size * _factor];
+
+            if (tailIndex > 0)
+                Array.Copy(_array, 0, newArray, 0, tailIndex);
+            if (tailIndex < Size - 1)
+                Array.Copy(_array, tailIndex + 1, newArray, tailIndex, Size - 1 - tailIndex);
+            _array = newArray;
         }
     }
 }

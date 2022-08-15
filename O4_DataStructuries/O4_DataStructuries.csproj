@@ -42,14 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FactorArray.cs" />
+    <Compile Include="Arrays\ArrayList.cs" />
+    <Compile Include="ArrayListTest.cs" />
+    <Compile Include="Arrays\SpaceArray.cs" />
+    <Compile Include="ArrayTest.cs" />
+    <Compile Include="Arrays\FactorArray.cs" />
     <Compile Include="FactorArrayTest.cs" />
-    <Compile Include="MatrixArray.cs" />
+    <Compile Include="Queues\FixedPriorityQueue.cs" />
+    <Compile Include="Arrays\MatrixArray.cs" />
     <Compile Include="MatrixArrayTest.cs" />
+    <Compile Include="Queues\InfinityPriorityQueue.cs" />
     <Compile Include="SingleArrayTest.cs" />
-    <Compile Include="VectorArray.cs" />
+    <Compile Include="Arrays\VectorArray.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SingleArray.cs" />
+    <Compile Include="Arrays\SingleArray.cs" />
     <Compile Include="VectorArrayTest.cs" />
   </ItemGroup>
   <ItemGroup>

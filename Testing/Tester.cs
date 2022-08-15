@@ -125,7 +125,7 @@ namespace Testing
         public void CustomRun(string[] inp, T expect)
         {
             Console.WriteLine($"\r\nMethod: {_work.Name}");
-            Console.Write($"Custom test. input: {string.Join(", ", inp)},  ");
+            Console.Write($"Custom test. input: ({string.Join(", ", inp)}),  ");
 
             long duration = 0;
             T actual;

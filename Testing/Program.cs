@@ -214,36 +214,69 @@ namespace Testing
 
         static void RunTests_4()
         {
+            Console.WriteLine("\r\nSelect operation:\r\n");
+            Console.WriteLine("1 - Add");
+            Console.WriteLine("2 - Insert");
+            Console.WriteLine("3 - Add + Remove");
+
+            char selection = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+
+            string mode = selection.ToString();
+            
+
             SimplyTester tester1 = new SimplyTester(new O4_DataStructuries.SingleArrayTest());
-            tester1.CustomRun(new string[] { "100" });
-            tester1.CustomRun(new string[] { "1000" });
-            tester1.CustomRun(new string[] { "10000" });
-            tester1.CustomRun(new string[] { "100000" });
+            tester1.CustomRun(new string[] { mode, "100" });
+            tester1.CustomRun(new string[] { mode, "1000" });
+            tester1.CustomRun(new string[] { mode, "10000" });            
+            tester1.CustomRun(new string[] { mode, "100000" });
 
             SimplyTester tester2 = new SimplyTester(new O4_DataStructuries.VectorArrayTest());
-            tester2.CustomRun(new string[] { "100", "100" });
-            tester2.CustomRun(new string[] { "100", "1000" });
-            tester2.CustomRun(new string[] { "100", "10000" });
-            tester2.CustomRun(new string[] { "100", "100000" });
-            tester2.CustomRun(new string[] { "100", "1000000" });
+            tester2.CustomRun(new string[] { mode, "100", "100" });
+            tester2.CustomRun(new string[] { mode, "100", "1000" });
+            tester2.CustomRun(new string[] { mode, "100", "10000" });
+            if (mode == "1")
+            {
+                tester2.CustomRun(new string[] { mode, "100", "100000" });            
+                tester2.CustomRun(new string[] { mode, "100", "1000000" });
+            }
+                
 
             SimplyTester tester3 = new SimplyTester(new O4_DataStructuries.FactorArrayTest());
-            tester3.CustomRun(new string[] { "100" });
-            tester3.CustomRun(new string[] { "1000" });
-            tester3.CustomRun(new string[] { "10000" });
-            tester3.CustomRun(new string[] { "100000" });
-            tester3.CustomRun(new string[] { "1000000" });
-            tester3.CustomRun(new string[] { "10000000" });
-            tester3.CustomRun(new string[] { "100000000" });
+            tester3.CustomRun(new string[] { mode, "100" });
+            tester3.CustomRun(new string[] { mode, "1000" });
+            tester3.CustomRun(new string[] { mode, "10000" });
+            tester3.CustomRun(new string[] { mode, "100000" });
+            if (mode == "1")
+            {
+                tester3.CustomRun(new string[] { mode, "1000000" });
+                tester3.CustomRun(new string[] { mode, "10000000" });
+                tester3.CustomRun(new string[] { mode, "100000000" });
+            }
 
             SimplyTester tester4 = new SimplyTester(new O4_DataStructuries.MatrixArrayTest());
-            tester4.CustomRun(new string[] { "100" });
-            tester4.CustomRun(new string[] { "1000" });
-            tester4.CustomRun(new string[] { "10000" });
-            tester4.CustomRun(new string[] { "100000" });
-            tester4.CustomRun(new string[] { "1000000" });
-            tester4.CustomRun(new string[] { "10000000" });
-            tester4.CustomRun(new string[] { "100000000" });
+            tester4.CustomRun(new string[] { mode, "100" });
+            tester4.CustomRun(new string[] { mode, "1000" });
+            tester4.CustomRun(new string[] { mode, "10000" });
+            tester4.CustomRun(new string[] { mode, "100000" });
+            if (mode == "1")
+            {
+                tester4.CustomRun(new string[] { mode, "1000000" });
+                tester4.CustomRun(new string[] { mode, "10000000" });
+                tester4.CustomRun(new string[] { mode, "100000000" });
+            }
+
+            SimplyTester tester5 = new SimplyTester(new O4_DataStructuries.ArrayListTest());
+            tester5.CustomRun(new string[] { mode, "100" });
+            tester5.CustomRun(new string[] { mode, "1000" });
+            tester5.CustomRun(new string[] { mode, "10000" });
+            tester5.CustomRun(new string[] { mode, "100000" });
+            tester5.CustomRun(new string[] { mode, "1000000" });
+            if (mode == "1")
+            {
+                tester5.CustomRun(new string[] { mode, "10000000" });
+                tester5.CustomRun(new string[] { mode, "100000000" });
+            }
         }
     }
 }

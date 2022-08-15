@@ -11,8 +11,10 @@ namespace Interfaces
         void Add(T item);
         void Add(T item, int index);
 
+        T Remove(int index);
+
         T Get(int index);
-        int Size { get;  } //private set;
+        int Size { get; }
 
         bool IsEmpty { get; }
     }
