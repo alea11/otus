@@ -198,12 +198,12 @@ namespace Testing
                     break;
 
                 case '7':
-                    Tester<ulong> tester8 = new Tester<ulong>(new O3_AlgebraicAlgorithms.Primes.Primes_Era(), path_03_Primes, maxDuration: 50000); // , 0, 13
-                    tester8.Run();
+                    Tester<ulong> tester7 = new Tester<ulong>(new O3_AlgebraicAlgorithms.Primes.Primes_Era(), path_03_Primes, maxDuration: 50000); // , 0, 13
+                    tester7.Run();
                     break;
                 case '8':
-                    Tester<uint> tester9 = new Tester<uint>(new O3_AlgebraicAlgorithms.Primes.Primes_EraLin(), path_03_Primes, maxDuration: 20000); //, 0, 13
-                    tester9.Run();
+                    Tester<uint> tester8 = new Tester<uint>(new O3_AlgebraicAlgorithms.Primes.Primes_EraLin(), path_03_Primes, maxDuration: 20000); //, 0, 13
+                    tester8.Run();
                     break;
 
                      

@@ -18,18 +18,22 @@ namespace O3_AlgebraicAlgorithms.Primes
 
             uint limit = uint.Parse(data[0]);            
 
-            uint[] divs = new uint[limit+1]; // тут храним наименьший делитель числа, заданного индексом
+            uint[] divs = new uint[limit/2+1]; // тут храним наименьший делитель числа, заданного индексом
 
-            uint[] primes = new uint[limit/2+1]; 
+            uint primescount = limit / 4; // грубая оценка
+            if (primescount < 25) 
+                primescount = 25;
+            uint[] primes = new uint[primescount]; 
             //List<uint> primes = new List<uint>(); // список найденных простых
 
-            uint count = 0;
-            for (uint i = 2; i <= limit; i++)
+            uint count = 1;
+            for (uint i = 3; i <= limit; i+=2) // проходим только по нечетным
             {
+                uint idx = (i - 3) >> 1; // индекс в рабочем массиве учитывает что начали от 3 и проходим только по нечетным
                 // проверяем , если пока не отмечено - то это простое
-                if (divs[i] == 0)
+                if (divs[idx] == 0)
                 {
-                    divs[i] = i;
+                    divs[idx] = i;
 
                     //primes.Add(i);
                     primes[count] = i;
@@ -38,10 +42,10 @@ namespace O3_AlgebraicAlgorithms.Primes
                 }
 
                 // отмечаем кратные
-                int p = 0;               
-                while((uint)p< count &&   primes[p] <=  divs[i] && primes[p] * i <= limit)
+                int p = 1;   // пропускаем 0-й элемент (не учитываем необрабатываемую 2)            
+                while((uint)p< count &&   primes[p] <=  divs[idx] && primes[p] * i <= limit)
                 {
-                    divs[primes[p] * i] = primes[p];
+                    divs[((primes[p] * i) -3) >>1] = primes[p]; // (индекс в рабочем массиве учитывает что начали от 3 и проходим только по нечетным)
                     p++;
                 }               
             }

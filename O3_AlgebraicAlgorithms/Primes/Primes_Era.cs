@@ -16,28 +16,29 @@ namespace O3_AlgebraicAlgorithms.Primes
             _cancelation = cancelation;
 
             ulong limit = ulong.Parse(data[0]);
-            ulong len = (limit / 32) + 1;
+            ulong len = (limit / 64) + 1; // /32 и еще на 2 - храним флаги только по нечетным
 
             UInt32[] divs = new UInt32[len];// тут храним биты - признак того что число не простое (вычеркиваем числа), по 32 в одном элементе
 
-            ulong count = 0;
-            for(ulong p = 2; p<= limit; p++)
+            ulong count = 1; // уже подсчитано число 2 
+            for(ulong p = 3; p<= limit; p+=2)
             {
                 if (_cancelation.Cancel)
                     return 0;
                 // индекс в массиве и смещение
-                ulong idx = p >> 5; // /32
-                int b = (int)( p - (idx << 5)); // *32 - т.е. получили остаток от деления (p-2)  на 32
+                ulong idx = (p -3) >> 6; // /64
+                int b = (int)(( ((p-3)>>1) - (idx << 6))); // *32 - т.е. получили остаток от деления p-3  на 32
 
                 // проверяем соответствующий бит (число не вычеркнуто, то это простое)
                 if ( ((divs[idx] >> b) & 1 )== 0 )
                 {
                     count++;
-                    for (ulong num = p*p; num <= limit; num +=p) // проход по кратным найденного простого, начиная от его квадрата 
+                    ulong p2 = p << 1;
+                    for (ulong num = p*p; num <= limit; num +=p2) // проход по кратным найденного простого, начиная от его квадрата (кроме четных)
                     {
                         // индекс в массиве и смещение
-                        ulong numIdx = num >> 5; // /32
-                        int numB = (int)(num - (numIdx << 5)); // *32 - т.е. получили остаток от деления (num-2)  на 32
+                        ulong numIdx = (num-3) >> 6; // /64
+                        int numB = (int)((((num-3)>>1) - (numIdx << 6))); // *32 - т.е. получили остаток от деления (num-3)  на 32
                         // устанавливаем соответствующий бит
                         divs[numIdx] |= (UInt32)(1 << numB);
                     }
