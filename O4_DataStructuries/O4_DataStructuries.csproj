@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>O4_DataStructuries</RootNamespace>
     <AssemblyName>O4_DataStructuries</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,10 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FactorArray.cs" />
+    <Compile Include="FactorArrayTest.cs" />
     <Compile Include="MatrixArray.cs" />
+    <Compile Include="MatrixArrayTest.cs" />
+    <Compile Include="SingleArrayTest.cs" />
     <Compile Include="VectorArray.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleArray.cs" />
+    <Compile Include="VectorArrayTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Interfaces\Interfaces.csproj">

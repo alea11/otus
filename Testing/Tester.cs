@@ -13,7 +13,7 @@ using Interfaces;
 
 namespace Testing
 {
-    class Tester<T> where T: IFormattable, IComparable
+    class Tester<T> //where T: IFormattable, IComparable
     {        
         private string _checkFilesPath;
         private int _maxDuration;
@@ -21,7 +21,7 @@ namespace Testing
         private int _minTestNumber;
         private int _maxTestNumber;
 
-        private CancellationTokenSource _cts = new CancellationTokenSource();
+        //private CancellationTokenSource _cts = new CancellationTokenSource();
         
 
         public Tester(IWork<T> work, string checkFilesPath, int minTestNumber = 0, int maxTestNumber = 0, int maxDuration = 0)
@@ -122,15 +122,15 @@ namespace Testing
             }
         }
 
-        public void CustomRun(string inp, T expect)
+        public void CustomRun(string[] inp, T expect)
         {
             Console.WriteLine($"\r\nMethod: {_work.Name}");
-            Console.Write($"Custom test. input: {inp},  ");
+            Console.Write($"Custom test. input: {string.Join(", ", inp)},  ");
 
             long duration = 0;
             T actual;
 
-            if (_Run(new string[] {inp}, out actual, ref duration) == true)
+            if (_Run(inp, out actual, ref duration) == true)
                 Console.WriteLine($"{actual.Equals(expect)},  duration: {duration} ms, result: {actual}");
 
         }

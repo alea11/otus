@@ -21,7 +21,8 @@ namespace Testing
         {
             Console.WriteLine("Select tests:\r\n");
             Console.WriteLine("1 - LuckyTickets");
-            Console.WriteLine("2 - AlgebraicAlgorithms");            
+            Console.WriteLine("2 - AlgebraicAlgorithms");
+            Console.WriteLine("3 - DataStructuries");
 
             char selection = Console.ReadKey().KeyChar;
 
@@ -59,9 +60,8 @@ namespace Testing
                     break;
                 case '3':
 
+                    RunTests_4();
 
-
-                    
                     break;
                 
                 
@@ -138,14 +138,14 @@ namespace Testing
                 {
                     Tester<BigInteger> tester2 = new Tester<BigInteger>(new O3_AlgebraicAlgorithms.Fibo.Fibo_A2(), path_03_Fibo, 0, 11, maxDuration: 20000);
                     tester2.Run();
-                    tester2.CustomRun("80", 23416728348467685);
+                    tester2.CustomRun(new string[] { "80" }, 23416728348467685);
                 }
 
                 if ((flaggs & 4) == 4)
                 {
                     Tester<ulong> tester3 = new Tester<ulong>(new O3_AlgebraicAlgorithms.Fibo.Fibo_A3(), path_03_Fibo, 0, 11, maxDuration: 20000);
                     tester3.Run();
-                    tester3.CustomRun("80", 23416728348467685);
+                    tester3.CustomRun(new string[] { "80" }, 23416728348467685);
                 }
 
                 if ((flaggs & 8) == 8)
@@ -210,13 +210,40 @@ namespace Testing
                 default:
                     return;
             }
+        }
 
-          
+        static void RunTests_4()
+        {
+            SimplyTester tester1 = new SimplyTester(new O4_DataStructuries.SingleArrayTest());
+            tester1.CustomRun(new string[] { "100" });
+            tester1.CustomRun(new string[] { "1000" });
+            tester1.CustomRun(new string[] { "10000" });
+            tester1.CustomRun(new string[] { "100000" });
 
-            
+            SimplyTester tester2 = new SimplyTester(new O4_DataStructuries.VectorArrayTest());
+            tester2.CustomRun(new string[] { "100", "100" });
+            tester2.CustomRun(new string[] { "100", "1000" });
+            tester2.CustomRun(new string[] { "100", "10000" });
+            tester2.CustomRun(new string[] { "100", "100000" });
+            tester2.CustomRun(new string[] { "100", "1000000" });
 
+            SimplyTester tester3 = new SimplyTester(new O4_DataStructuries.FactorArrayTest());
+            tester3.CustomRun(new string[] { "100" });
+            tester3.CustomRun(new string[] { "1000" });
+            tester3.CustomRun(new string[] { "10000" });
+            tester3.CustomRun(new string[] { "100000" });
+            tester3.CustomRun(new string[] { "1000000" });
+            tester3.CustomRun(new string[] { "10000000" });
+            tester3.CustomRun(new string[] { "100000000" });
 
-
+            SimplyTester tester4 = new SimplyTester(new O4_DataStructuries.MatrixArrayTest());
+            tester4.CustomRun(new string[] { "100" });
+            tester4.CustomRun(new string[] { "1000" });
+            tester4.CustomRun(new string[] { "10000" });
+            tester4.CustomRun(new string[] { "100000" });
+            tester4.CustomRun(new string[] { "1000000" });
+            tester4.CustomRun(new string[] { "10000000" });
+            tester4.CustomRun(new string[] { "100000000" });
         }
     }
 }

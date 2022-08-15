@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimplyTester.cs" />
     <Compile Include="Tester.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,7 +64,7 @@
       <Project>{f89c7a2c-514a-4628-9c27-0bf0335054c1}</Project>
       <Name>O3_AlgebraicAlgorithms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\O4_Contayners\O4_DataStructuries.csproj">
+    <ProjectReference Include="..\O4_DataStructuries\O4_DataStructuries.csproj">
       <Project>{ec8eae51-6223-47a8-b8a3-7be385a6bc4e}</Project>
       <Name>O4_DataStructuries</Name>
     </ProjectReference>

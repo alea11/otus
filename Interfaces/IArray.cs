@@ -13,6 +13,8 @@ namespace Interfaces
 
         T Get(int index);
         int Size { get;  } //private set;
+
+        bool IsEmpty { get; }
     }
 }
 /*
